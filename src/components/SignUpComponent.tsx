@@ -21,15 +21,21 @@ function SignUpComponent(){
 
 
     return (
-        <div>
-
-            <label className="flex mt-[25px] ml-[25px]">Email id</label>
+        // <div className="flex flex-col h-[415px] w-[400px] bg-neutral-100 ml-[40px] bg-white rounded-xl">
+        <>
+            <label className="flex   mt-[5px]  ml-[25px]">First Name</label>
             
-                <TextField className="left-[25px] top-[5px]"
+                <TextField className="left-[25px] ]"
               id="outlined-size-small"
               size="small" style = {{width: 252}}
             />
-              <label className="flex mt-[10px] ml-[25px]">Password</label>
+            <label className="flex ml-[25px]">Email id</label>
+            
+            <TextField className="left-[25px]"
+          id="outlined-size-small"
+          size="small" style = {{width: 252}}
+        />
+              <label className="flex  ml-[25px]">Password</label>
             <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined" size="small" style = {{width: 252, left:20}} >
               <OutlinedInput
                 id="outlined-adornment-password"
@@ -50,26 +56,16 @@ function SignUpComponent(){
                 }
               />
             </FormControl>
-            <div className="flex ml-[185px] color-blue"> 
-            <label className="text-[#9D9D9D] text-xs">Forgot Password?</label>
+            <label className="flex ml-[25px]">Mobile Number</label>
+            
+            <TextField className="left-[25px]"
+          id="outlined-size-small"
+          size="small" style = {{width: 252}}
+        />
 
-            </div>
-            <Button variant="contained" style={{width: '252px', left:'31px',top:'10px',backgroundColor:'#A03037'}}>Login</Button>
-            <div className="flex flex-row mt-[20px] ml-[80px]">
-                <hr style={{ borderColor: 'white' }} />________
-                <span className="flex font-bold">OR</span> 
-                <hr style={{ borderColor: 'white' }} />________
-            </div>
-
-            <div className="flex">
-            <Button variant="outlined" style={{width: '126px', left:'31px',top:'20px',backgroundColor:'#4266B2',color:'white'}}>
-                Facebook
-            </Button>
-            <Button variant="outlined" style={{width: '119px', left:'37px',top:'20px',backgroundColor:'#F5F5F5', border:'#E4E4E4', color:'#0A0102'}}>
-                Google
-            </Button>
-            </div>
-        </div>
+            <Button variant="contained" style={{width: '252px', left:'26px',top:'15px',backgroundColor:'#A03037'}}>Signup</Button>
+            
+        </>
     );
         
 }

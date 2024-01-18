@@ -21,16 +21,17 @@ function SignInComponent(){
 
 
     return (
-        <div>
+       
+        // <div className="flex flex-col h-[425px] w-[389px] bg-neutral-100 ml-[658px] bg-white rounded-xl border-solid">
+<>
 
-            <label className="flex mt-[25px] ml-[25px]">Email id</label>
-            
-                <TextField className="left-[25px] top-[5px]"
+             <label className="flex mt-[25px] ml-[25px]">Email id</label>
+              <TextField className="left-[25px] top-[3px]"
               id="outlined-size-small"
               size="small" style = {{width: 252}}
             />
-              <label className="flex mt-[10px] ml-[25px]">Password</label>
-            <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined" size="small" style = {{width: 252, left:20}} >
+            <label className="flex mt-[10px] ml-[25px]">Password</label>
+            <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined" size="small" style = {{width: 252, left:18}} >
               <OutlinedInput
                 id="outlined-adornment-password"
                 type={showPassword ? "text" : "password"}
@@ -68,8 +69,9 @@ function SignInComponent(){
             <Button variant="outlined" style={{width: '119px', left:'37px',top:'20px',backgroundColor:'#F5F5F5', border:'#E4E4E4', color:'#0A0102'}}>
                 Google
             </Button>
-            </div>
-        </div>
+            </div> 
+        {/* </div> */}
+        </>
     );
         
 }
