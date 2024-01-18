@@ -28,14 +28,8 @@ function CustomTabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3, width: '100%', boxSizing: 'border-box' }}>
-          <Typography>{children}</Typography>
-          {/* Placeholder signup fields */}
-          <TextField label="Full Name" variant="outlined" fullWidth margin="normal" />
-          <TextField label="Email" variant="outlined" fullWidth margin="normal" />
-          <TextField label="Password" variant="outlined" fullWidth margin="normal" />
-          <TextField label="Confirm Password" variant="outlined" fullWidth margin="normal" />
-          <Button variant="contained" style={{ width: '100%', marginTop: '20px', backgroundColor: '#A03037' }}>Register</Button>
+        <Box sx={{ p: 3}}>
+          
         </Box>
       )}
       <TextField id="outlined-basic" variant="outlined" />
@@ -81,7 +75,7 @@ function SignUpAndLoginComponent() {
               <Tab
                 label="LOGIN"
                 sx={{
-                  marginRight: "50px",
+                  marginRight: "31px",
                   fontSize: 17,
                   fontWeight: "bold",
                   marginLeft: "50px",
