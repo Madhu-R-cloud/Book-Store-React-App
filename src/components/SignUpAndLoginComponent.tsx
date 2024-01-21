@@ -54,15 +54,16 @@ function SignUpAndLoginComponent() {
   };
 
   return (
-    <div className="flex h-[768px] w-[1366px] bg-stone-300">
+    
+    <div className="h-[100vh] flex items-center justify-cente bg-stone-300">
       <div className="flex h-[391px] w-[660px] bg-neutral-100 m-auto rounded-2xl">
-        <div className="flex flex-col h-[245px] w-[245px] bg-transparent ml-[53px] mt-[52px] ">
+         <div className="flex flex-col h-[245px] w-[245px] bg-transparent ml-[53px] mt-[52px] ">
           <img className="rounded-full" src={Logo} alt="Logo" />
           <p className="font-bold text-base mt-3 ml-[10px]">
             ONLINE BOOK SHOPPING
           </p>
         </div>
-        <div className="flex flex-row h-[415px] w-[400px] bg-neutral-100 ml-[40px] bg-white rounded-xl">
+        <div className="absolute top-[88px] left-[660px] flex flex-row h-[430px] w-[330px] bg-neutral-100 ml-[40px] bg-white rounded-xl">
           <Box
             sx={{ borderBottom: 1, borderColor: "divider", width: "100%" }}
           >
@@ -97,8 +98,10 @@ function SignUpAndLoginComponent() {
         </Box>
 
         </div>
-      </div>
+      </div> 
     </div>
+
+    
   );
 }
 

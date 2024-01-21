@@ -1,19 +1,43 @@
-import React from 'react';
+import React, { Children } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-// import App from './App';
-import SignUpAndLoginComponent from './components/SignUpAndLoginComponent'
-import SignInComponent from './components/SignInComponent';
-import SignUpComponent from './components/SignUpComponent';
+import HomePageComponent from './components/HomePageComponent';
 import reportWebVitals from './reportWebVitals';
+import BooksContainerComponent from './components/BooksContainerComponent';
+import { RouterProviderProps, Router, RouterProvider, createBrowserRouter } from 'react-router-dom';
+import SignUpAndLoginComponent from './components/SignUpAndLoginComponent';
+import HeaderAndFooterComponent from './components/HeaderAndFooterComponent';
+import { paste } from '@testing-library/user-event/dist/paste';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <SignUpAndLoginComponent />,
+  },
+  {
+    path: '/home',
+    element: <HeaderAndFooterComponent />,
+    children: [
+      {
+        path: '',
+        element: <BooksContainerComponent />,
+      },
+    ],
+  },
+]);
+
+
 root.render(
-  <React.StrictMode>
-    <SignUpAndLoginComponent />
-  </React.StrictMode>
+  // <React.StrictMode>
+  //   <BooksContainerComponent />
+  // </React.StrictMode>
+  <RouterProvider router={router}/>
+
+ 
 );
 
 // If you want to start measuring performance in your app, pass a function

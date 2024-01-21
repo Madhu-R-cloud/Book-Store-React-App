@@ -21,21 +21,21 @@ function SignUpComponent(){
 
 
     return (
-        // <div className="flex flex-col h-[415px] w-[400px] bg-neutral-100 ml-[40px] bg-white rounded-xl">
+        // <div className="flex flex-col h-[415px] w-[400px] bg-neutral-10w0 ml-[40px] bg-white rounded-xl">
         <>
-            <label className="flex   mt-[5px]  ml-[25px]">First Name</label>
+            <label className="flex mt-[5px] ml-[25px] text-xs">First Name</label>
             
                 <TextField className="left-[25px] ]"
               id="outlined-size-small"
               size="small" style = {{width: 252}}
             />
-            <label className="flex ml-[25px]">Email id</label>
+            <label className="flex ml-[25px] mt-[10px] text-xs">Email id</label>
             
             <TextField className="left-[25px]"
           id="outlined-size-small"
           size="small" style = {{width: 252}}
         />
-              <label className="flex  ml-[25px]">Password</label>
+              <label className="flex  ml-[25px] mt-[10px] text-xs">Password</label>
             <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined" size="small" style = {{width: 252, left:20}} >
               <OutlinedInput
                 id="outlined-adornment-password"
@@ -56,7 +56,7 @@ function SignUpComponent(){
                 }
               />
             </FormControl>
-            <label className="flex ml-[25px]">Mobile Number</label>
+            <label className="flex ml-[25px] mt-[10px] text-xs">Mobile Number</label>
             
             <TextField className="left-[25px]"
           id="outlined-size-small"

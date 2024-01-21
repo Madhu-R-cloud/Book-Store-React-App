@@ -25,12 +25,13 @@ function SignInComponent(){
         // <div className="flex flex-col h-[425px] w-[389px] bg-neutral-100 ml-[658px] bg-white rounded-xl border-solid">
 <>
 
-             <label className="flex mt-[25px] ml-[25px]">Email id</label>
+             <label className="flex mt-[25px] ml-[25px] text-xs">Email Id</label>
               <TextField className="left-[25px] top-[3px]"
               id="outlined-size-small"
-              size="small" style = {{width: 252}}
+              size="small" 
+              style = {{width: 252}}
             />
-            <label className="flex mt-[10px] ml-[25px]">Password</label>
+            <label className="flex mt-[10px] ml-[25px] text-xs">Password</label>
             <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined" size="small" style = {{width: 252, left:18}} >
               <OutlinedInput
                 id="outlined-adornment-password"
@@ -57,9 +58,9 @@ function SignInComponent(){
             </div>
             <Button variant="contained" style={{width: '252px', left:'31px',top:'10px',backgroundColor:'#A03037'}}>Login</Button>
             <div className="flex flex-row mt-[20px] ml-[80px]">
-                <hr style={{ borderColor: 'white' }} />________
-                <span className="flex font-bold">OR</span> 
-                <hr style={{ borderColor: 'white' }} />________
+                <hr style={{ borderColor: 'white' }} />  ________
+                <span className="flex font-bold mt-[5.5px]">OR</span> 
+                <hr style={{ borderColor: 'white' }} />  ________
             </div>
 
             <div className="flex">
