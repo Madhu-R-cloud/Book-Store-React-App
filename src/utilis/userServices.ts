@@ -1,22 +1,29 @@
 import axios from "axios";
 
-interface SignupDetails {
-  firstName: string;
-  email: string;
-  password: string;
-  mobileNumber: string;
-}
 
-const SignUp = async (signUpDetails: SignupDetails) => {
-  try {
-    console.log(signUpDetails);
+const BASEURL = "https://bookstore.incubation.bridgelabz.com/bookstore_user"
 
-    const response = await axios.post('https://bookstore.incubation.bridgelabz.com/bookstore_user/registration', signUpDetails);
-    console.log(response);
-    localStorage.setItem('Token', response.data.id);
-  } catch (error) {
-    console.error(error);
-  }
-};
 
-export default SignUp;
+export async function createUser(userObj:object,navigate:Function){
+  await axios.post(`${BASEURL}/registration`,userObj).then(res => {
+    const usertoken = res.data.result.accessToken
+    localStorage.setItem("accessToken",usertoken)
+    navigate("/book")
+      }).catch(err => {
+          const error = err.response.data.error
+          console.log(error);
+          
+        });
+      }
+
+      export async function Login(userObj:object,navigate:Function){
+        await axios.post(`${BASEURL}/login`,userObj).then(res => {
+          const usertoken = res.data.result.accessToken
+          localStorage.setItem("accessToken",usertoken)
+          navigate("/book")
+            }).catch(err => {
+                const error = err.response.data.error
+                console.log(error);
+                
+              });
+            }
