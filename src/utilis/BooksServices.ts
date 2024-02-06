@@ -52,7 +52,7 @@ export async function updateCartQty(productId:string,quantity:any){
     console.log(productId);
     
 const res=  await axios.put(`${BaseURL}cart_item_quantity/${productId}`,{"quantityToBuy":quantity},configForBooks())
-console.log(res);
+// console.log(res);
 
 }   
 
@@ -61,7 +61,9 @@ export async function removeCartItem(productId:string){
         }
     
     export async function addWishList(productId:string){
-        await axios.post(`${BaseURL}add_wish_list/${productId}`,{},configForAddNotes)
+        await axios.post(`${BaseURL}add_wish_list/${productId}`,{},configForAddNotes);
+        
+        
         }
     
     export async function getWishlistItems(){
@@ -72,7 +74,11 @@ export async function removeCartItem(productId:string){
             return data
         }
     export async function removeWishlistItem(productId:string){
-        await axios.delete(`${BaseURL}remove_wishlist_item/${productId}`,configForAddNotes)
-        }
+        console.log(productId);
+        
+      const res =  await axios.delete(`${BaseURL}remove_wishlist_item/${productId}`,configForBooks())
+        console.log(res);
+            
+    }
 
         

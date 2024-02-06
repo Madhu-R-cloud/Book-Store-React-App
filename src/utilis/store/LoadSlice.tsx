@@ -4,13 +4,18 @@ const LoadSlice = createSlice({
     name:"load",
     initialState:{
         pageLoads: true,
+        pageLoadsWishList: false,
+        
     },
     reducers:{
         setLoaded:(state:any,action) =>{  
             state.pageLoads = (action.payload);
         },
+        setLoadedWishList:(state:any,action) =>{  
+            state.pageLoadsWishList = (action.payload);
+        },
     }
 })
 
-export const{ setLoaded } = LoadSlice.actions;
+export const{ setLoaded,setLoadedWishList } = LoadSlice.actions;
 export default LoadSlice.reducer;
