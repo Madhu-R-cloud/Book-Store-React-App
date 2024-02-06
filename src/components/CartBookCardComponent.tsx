@@ -1,13 +1,16 @@
 import { AddCircleOutline, RemoveCircleOutline } from "@mui/icons-material";
-import {IconButton } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSlots, AccordionSummary, Button, Fade, IconButton, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCartItem, updateItemQuantity } from "../utilis/store/CartSlice";
 import { removeCartItem, updateCartQty, getCartsDetails } from "../utilis/BooksServices";
 import displayImg from '../assets/Books/Image 12.png';
 import { useEffect, useState } from "react";
 import DeleteIcon from '@mui/icons-material/Delete';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const CartBookCardComponent = ({ book, index }: { book: any; index: number }) => {
+  // console.log(book);
+  
   const dispatch = useDispatch();
   const cartItems = useSelector((store: any) => store.cart.cartItems);
   const cartBook = cartItems.filter((cartbook: any) => cartbook._id === book._id)[0]
@@ -15,7 +18,7 @@ const CartBookCardComponent = ({ book, index }: { book: any; index: number }) =>
   
   
   useEffect(() => {
-    getCartsDetails()
+    // getCartsDetails()
   }, [cartItems])
 
   const removeItem = async () => {
@@ -34,7 +37,7 @@ const CartBookCardComponent = ({ book, index }: { book: any; index: number }) =>
       dispatch(
         updateItemQuantity({ itemId: book._id, updatedQuantity: updatedQuntity })
       );
-      updateCartQty(book._id, updatedQuntity);
+      updateCartQty(book.cartId, updatedQuntity);
     }
   };
 
@@ -45,7 +48,7 @@ const CartBookCardComponent = ({ book, index }: { book: any; index: number }) =>
       dispatch(
         updateItemQuantity({ itemId: book._id, updatedQuantity: updatedQuntity })
       );
-      updateCartQty(book._id, updatedQuntity);
+      updateCartQty(book.cartId, updatedQuntity);
     }
   };
 

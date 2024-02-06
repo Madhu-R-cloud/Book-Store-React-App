@@ -16,7 +16,6 @@
                
                 state.cartItems = state.cartItems.map((cartBook:any)=>{
                 if(cartBook._id===action.payload.itemId){
-                    console.log(state.cartBook);
                     return {...cartBook, quantityToBuy:action.payload.updatedQuantity}
                 }
                     return cartBook

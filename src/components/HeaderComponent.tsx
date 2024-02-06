@@ -15,7 +15,7 @@ import {
   getWishlistItems,
 } from "../utilis/BooksServices";
 import { addItemsToBook } from "../utilis/store/BookSlice";
-import { setLoaded } from "../utilis/store/LoadSlice";
+import { setLoaded, setLoadedWishList } from "../utilis/store/LoadSlice";
 import { putCartList } from "../utilis/store/CartSlice";
 import { Badge, Button, Menu } from "@mui/material";
 import {
@@ -29,6 +29,10 @@ function HeaderComponent() {
   const dispatch = useDispatch();
   const cartItems = useSelector((store: any) => store.cart.cartItems);
   const BookList = useSelector((store: any) => store.books.bookItems);
+  const wishListItems = useSelector((store:any)=> store.wish.wishListItems)
+//  console.log(cartItems,'cartItems');
+ 
+
   const [menu, setMenu] = useState(null);
   const [name, setName] = useState("Profile");
   const open = Boolean(menu);
@@ -51,23 +55,34 @@ function HeaderComponent() {
 
   useEffect(() => {
     getBooks();
+    getCartDetails();
+    getWishListDetails();
   }, []);
 
   const getCartDetails = async () => {
     const response = await getCartsDetails();   
-    const bookList = response.map((cartBook:any)=>{return{...cartBook,_id:cartBook.product_id._id,cartId:cartBook._id,quantityToBuy:cartBook.quantityToBuy,user_id:cartBook.user_id}})
+    const bookList = response.map((cartBook:any)=>{return{...cartBook,bookName:cartBook.product_id.bookName,author:cartBook.product_id.author,price:cartBook.product_id.price,discountPrice:cartBook.product_id.discountPrice,_id:cartBook.product_id._id,cartId:cartBook._id,quantityToBuy:cartBook.quantityToBuy,user_id:cartBook.user_id}})
     dispatch(putCartList(bookList));
   };
   
+  
   const getWishListDetails = async () => {
-    const response = await getWishlistItems();
-    dispatch(putWishList(response));
+    const wishList = await getWishlistItems();
+      if(wishList!=''){
+        dispatch(setLoadedWishList(true));
+      }
+      const wishListFiltered = wishList.map((wishlist:any)=>{
+        return{...wishlist,_id:wishlist.product_id._id,bookName:wishlist.product_id.bookName,author:wishlist.product_id.author,price:wishlist.product_id.price,discountedPrice:wishlist.product_id.discountPrice
+        }})
+
+      dispatch(putWishList(wishListFiltered));
+      
+    // }
   };
 
-  useEffect(() => {
-    getCartDetails();
-    getWishListDetails();
-  }, []);
+  // useEffect(() => {
+   
+  // }, []);
 
   return (
     <>
@@ -156,7 +171,10 @@ function HeaderComponent() {
         </div>
       </header>
     </>
-  );
+
+);
+
 }
+
 
 export default HeaderComponent;

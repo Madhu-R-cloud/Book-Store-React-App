@@ -13,7 +13,9 @@ const wishListSlice = createSlice({
             state.wishListItems.push(action.payload)
         },
         deleteWishItem: (state,action) => {
-            state.wishListItems=state.wishListItems.filter((book:any)=>book._id!==action.payload)
+            // console.log(action.payload);
+            
+            state.wishListItems = state.wishListItems.filter((book:any)=>book._id!==action.payload)
         }
     }
 })

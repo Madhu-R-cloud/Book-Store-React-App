@@ -45,7 +45,6 @@ function BookDetailsComponent() {
   const [showImage, setShowImage] = useState<any>(Img1);
   const [AddToBag, setAddToBag] = useState<any>(false);
   const [wishList, setWishList] = useState<boolean>();
-  const [index, setindex] = useState<number>(0);
   const { bookId } = useParams();
   const dispatch = useDispatch();
 
@@ -62,22 +61,17 @@ function BookDetailsComponent() {
 
   const AddToCart = async () => {
     const NewCartBook = await addToCart(bookId!);    
-    setAddToBag(true);
-    dispatch(
-      addItemToCart({ ...bookData, quantityToBuy: 1, cartId: NewCartBook._id })
-    );
-
-    // const num = cartItems.findIndex((e: any) => e.cartId === NewCartBook._id);
-    // setindex(Math.abs(num));
+    setAddToBag(true);  
+    dispatch(addItemToCart({ ...bookData,product_id:NewCartBook.product_id,quantityToBuy: 1, cartId: NewCartBook._id }))
   };
+  // console.log(cartItems);
+  
 
   const IncrementQuantity = () => {
     let updatedQuntity = cartItems[0].quantityToBuy;
     updatedQuntity++;
-    dispatch(
-      updateItemQuantity({ itemId: bookId, updatedQuantity: updatedQuntity })
-    );
-    // console.log(cartId);
+    dispatch(updateItemQuantity({ itemId: bookId, updatedQuantity: updatedQuntity }));
+    // console.log(cartItems);
     
     updateCartQty(cartId?.cartId, updatedQuntity);
   };
@@ -87,10 +81,8 @@ function BookDetailsComponent() {
     let updatedQuntity = cartItems[0].quantityToBuy;
    
     updatedQuntity--;
-    dispatch(
-      updateItemQuantity({ itemId: bookId, updatedQuantity: updatedQuntity })
-    );
-    // console.log(cartId);
+    dispatch(updateItemQuantity({ itemId: bookId, updatedQuantity: updatedQuntity }));
+    // console.log(cartItems);
     updateCartQty(cartId?.cartId, updatedQuntity);
   };
 
@@ -127,7 +119,7 @@ function BookDetailsComponent() {
     if (wishId?._id) {
       setWishList(true);
     }
-  }, [bookItems, cartItems]);
+  }, [bookItems,  cartItems,wishLists]);
 
   const handleWishList = () => {
     addWishList(bookId!);
