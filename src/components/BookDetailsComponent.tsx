@@ -18,9 +18,12 @@ import {
 import {
   addToCart,
   addWishList,
+  bookFeedback,
+  getFeedback,
   updateCartQty,
 } from "../utilis/BooksServices";
 import { addWishListItem } from "../utilis/store/wishListSlice";
+import { getReviewList } from "../utilis/store/ReviewSlice";
 
 interface bookData {
   _id: string;
@@ -36,7 +39,7 @@ interface bookData {
 function BookDetailsComponent() {
   const bookItems = useSelector((store: any) => store.books.bookItems);
   const cartItems = useSelector((store: any) => store.cart.cartItems);
-  
+  const feedBackList = useSelector((store:any)=> store.review.reviewList)
   const wishLists = useSelector((store: any) => store.wish.wishListItems);
 
   const [value, setValue] = useState<null | number>(2);
@@ -64,25 +67,23 @@ function BookDetailsComponent() {
     setAddToBag(true);  
     dispatch(addItemToCart({ ...bookData,product_id:NewCartBook.product_id,quantityToBuy: 1, cartId: NewCartBook._id }))
   };
-  // console.log(cartItems);
   
 
   const IncrementQuantity = () => {
+    
     let updatedQuntity = cartItems[0].quantityToBuy;
     updatedQuntity++;
     dispatch(updateItemQuantity({ itemId: bookId, updatedQuantity: updatedQuntity }));
-    // console.log(cartItems);
-    
     updateCartQty(cartId?.cartId, updatedQuntity);
+    
   };
 
 
   const decrementQuantity = () => {
+    
     let updatedQuntity = cartItems[0].quantityToBuy;
-   
     updatedQuntity--;
     dispatch(updateItemQuantity({ itemId: bookId, updatedQuantity: updatedQuntity }));
-    // console.log(cartItems);
     updateCartQty(cartId?.cartId, updatedQuntity);
   };
 
@@ -96,6 +97,14 @@ function BookDetailsComponent() {
   //     );
   //     updateCartQty(book.cartId, updatedQuntity);
   //   }
+  // };
+  // const IncrementQuantity = () => {
+    
+  //   let updatedQuntity = cartItems[0].quantityToBuy;
+  //   updatedQuntity++;
+  //   dispatch(updateItemQuantity({ itemId: bookId, updatedQuantity: updatedQuntity }));
+  //   updateCartQty(cartId?.cartId, updatedQuntity);
+    
   // };
 
   // const decrementQuantity = () => {
@@ -126,6 +135,18 @@ function BookDetailsComponent() {
     dispatch(addWishListItem(bookData));
     setWishList(true);
   };
+
+  const pushFeeback = async()=>{
+    const comment = (document.getElementById('comment') as HTMLInputElement)
+    await bookFeedback(bookId!,value!,comment.value)
+    setValue(0)
+    comment.value = ''
+}
+
+const getReviews = async()=>{
+    const feedback = await getFeedback(bookId!)
+    dispatch(getReviewList(feedback))
+}
 
   return (
     <>
@@ -307,11 +328,24 @@ function BookDetailsComponent() {
                   height: "29px",
                   marginLeft: "475px",
                   marginTop: "10px",
-                }}
+                }} 
+                onClick={pushFeeback}
               >
                 Submit
               </Button>
             </div>
+            {feedBackList.map((review:any,index:number)=><div key={index} className="flex justify-center mt-5 mb-20">
+                        <div className="w-full flex gap-5">
+                            <div className="border w-[40px] h-[40px] border-[#E4E4E4] bg-[#F5F5F5] rounded-full flex justify-center items-center">
+                                <h1 className="text-xs text-[#707070]">{review.user_id.fullName[0]+review.user_id.fullName[1]}</h1>
+                                </div>
+                                <div>
+                                <h1 className="font-bold">{review.user_id.fullName}</h1>
+                                <Rating name="read-only" value={review.rating} readOnly />
+                                <p className="text-wrap text-sm text-slate-500">{review.comment}</p>
+                                </div>
+                                </div>
+                                </div>)}
           </div>
         </div>
       </div>

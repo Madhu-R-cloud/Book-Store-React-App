@@ -13,6 +13,10 @@ import CartComponent from './components/CartComponent';
 import { Provider } from 'react-redux';
 import appStore from './utilis/store/AppStore';
 import WishListComponent from './components/WishListComponent';
+import MyOrdersComponent from './components/MyOrdersComponent';
+import SuccessPageComponent from './components/SuccessPageComponent';
+import ProfilePageComponent from './components/ProfilePageComponent';
+import AuthPageComponent from './components/AuthPageComponent';
 // import { Provider } from 'react-redux';
 // import appStore from './utilis/store/AppStore';
 const root = ReactDOM.createRoot(
@@ -22,7 +26,12 @@ const root = ReactDOM.createRoot(
 const router = createBrowserRouter([
   {
     path: '/',
+    // element:<AuthPageComponent/>
     element: <SignUpAndLoginComponent />,
+  },
+  {
+    path:'/error',
+    element:<ErrorComponent />
   },
   {
     path: '/book',
@@ -37,10 +46,6 @@ const router = createBrowserRouter([
         element:<BookDetailsComponent />
       },
       {
-        path:'error',
-        element:<ErrorComponent />
-      },
-      {
         path:'cart',
         element:<CartComponent/>
       }, 
@@ -48,7 +53,18 @@ const router = createBrowserRouter([
         path:'wishlist',
         element:<WishListComponent/>,
       },
-
+      {
+        path:'orders',
+        element:<MyOrdersComponent/>
+      },
+      {
+        path:'orderplaced',
+        element:<SuccessPageComponent/>
+      },
+      {
+        path:'profile',
+        element:<ProfilePageComponent/>
+      },
     ],
   },
 ]);

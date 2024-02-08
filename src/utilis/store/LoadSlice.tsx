@@ -4,7 +4,7 @@ const LoadSlice = createSlice({
     name:"load",
     initialState:{
         pageLoads: true,
-        pageLoadsWishList: false,
+        pageLoadsWishList: true,
         
     },
     reducers:{

@@ -10,6 +10,7 @@ export async function createUser(userObj:object,navigate:Function){
     localStorage.setItem("accessToken",usertoken)
     navigate("/book")
       }).catch(err => {
+        navigate("/error")
           const error = err.response.data.error
           console.log(error);
           
@@ -22,6 +23,8 @@ export async function createUser(userObj:object,navigate:Function){
           localStorage.setItem("accessToken",usertoken)
           navigate("/book")
             }).catch(err => {
+              navigate("/error")
+              // alert('Something went wrong')
                 const error = err.response.data.error
                 console.log(error);
                 
