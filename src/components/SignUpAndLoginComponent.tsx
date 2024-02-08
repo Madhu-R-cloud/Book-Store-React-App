@@ -55,7 +55,9 @@ function SignUpAndLoginComponent() {
 
   return (
     
-    <div className="h-[100vh] flex items-center justify-cente bg-stone-300">
+    <div className="h-[100vh] flex items-center justify-cente"  style={
+      value ? { backgroundColor: "#bdbdbd" } : { backgroundColor: "#3c3c3c" }
+    }>
       <div className="flex h-[391px] w-[660px] bg-neutral-100 m-auto rounded-2xl">
          <div className="flex flex-col h-[245px] w-[245px] bg-transparent ml-[53px] mt-[52px] ">
           <img className="rounded-full" src={Logo} alt="Logo" />
@@ -72,6 +74,7 @@ function SignUpAndLoginComponent() {
               value={value}
               onChange={handleChange}
               aria-label="basic tabs example"
+              
             >
               <Tab
                 label="LOGIN"
@@ -82,6 +85,7 @@ function SignUpAndLoginComponent() {
                   marginLeft: "50px",
                   marginTop: "10px",
                   ...a11yProps(0),
+                  // backgroundColor:'red'
                 }}
               />
               <Tab

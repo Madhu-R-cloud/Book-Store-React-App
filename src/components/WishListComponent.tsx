@@ -49,7 +49,7 @@ function WishListComponent() {
         </div>
       ) : (
         <div>
-          <h1>Data Is Not Loaded</h1>
+          {/* <h1>Data Is Not Loaded</h1> */}
           <CircularProgress />
         </div>
       )}

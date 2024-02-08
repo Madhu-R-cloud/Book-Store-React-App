@@ -2,10 +2,7 @@ import { DeleteOutline } from "@mui/icons-material"
 import { removeWishlistItem } from "../utilis/BooksServices"
 import { useDispatch, useSelector} from "react-redux"
 import { deleteWishItem } from "../utilis/store/wishListSlice"
-import { useEffect } from "react"
 import displayImg from '../assets/Books/Image 12.png';
-import { blueGrey } from "@mui/material/colors"
-
 
 function WishListCardComponent({book}:{book:any}) {
     const dispatch = useDispatch()

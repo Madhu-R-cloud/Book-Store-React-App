@@ -8,8 +8,6 @@
         reducers:{
             addItemToCart:(state:any,action) =>{
                 state.cartItems.push(action.payload);
-                console.log(action.payload);
-                
             },
             updateItemQuantity: (state:any,action) => {
                 

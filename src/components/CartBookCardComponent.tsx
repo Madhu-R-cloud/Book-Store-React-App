@@ -9,25 +9,17 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const CartBookCardComponent = ({ book, index }: { book: any; index: number }) => {
-  // console.log(book);
-  
   const dispatch = useDispatch();
   const cartItems = useSelector((store: any) => store.cart.cartItems);
   const cartBook = cartItems.filter((cartbook: any) => cartbook._id === book._id)[0]
-  // console.log(cartItems);
   
   
   useEffect(() => {
-    // getCartsDetails()
   }, [cartItems])
 
   const removeItem = async () => {
-
     const res = await removeCartItem(book.cartId);
-    // if(res!=undefined){
     dispatch(deleteCartItem(book._id));
-    // }
-
   };
 
   const IncrementQuantity = () => {

@@ -3,6 +3,7 @@ import CartSlice from "./CartSlice";
 import BookSlice from "./BookSlice"
 import LoadSlice from "./LoadSlice";
 import wishListSlice from "./wishListSlice";
+import reviewSlice from "./ReviewSlice";
 
 const appStore = configureStore({
     reducer : {
@@ -10,6 +11,7 @@ const appStore = configureStore({
         books:BookSlice,
         pageload:LoadSlice,
         wish: wishListSlice,
+        review:reviewSlice,
     }
 })
 
