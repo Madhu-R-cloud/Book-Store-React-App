@@ -1,4 +1,3 @@
-import { Button } from "@mui/material"
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 
@@ -18,10 +17,10 @@ function ProfilePageComponent(){
         <div className="w-[50%] flex flex-col gap-2 mb-[20px]">
             <div className="w-full flex flex-col"><label>Full Name</label><span className="px-5 py-2 h-[45px] border-2 rounded">{cartItems[0]?.user_id?.fullName}</span></div>
             <div className="w-full flex flex-col"><label>Email Id</label><span className="px-5 py-2 h-[45px] border-2 rounded">{cartItems[0]?.user_id?.email}</span></div>
-            <div className="w-full flex flex-col"><label>Password</label><span className="px-5 py-2 h-[45px] border-2 rounded">{cartItems[0]?.user_id?.fullName}</span></div>
+            {/* <div className="w-full flex flex-col"><label>Password</label><span className="px-5 py-2 h-[45px] border-2 rounded">{cartItems[0]?.user_id?.fullName}</span></div> */}
             <div className="w-full flex flex-col"><label>Mobile Number</label><span className="px-5 py-2 h-[45px] border-2 rounded">{cartItems[0]?.user_id?.phone}</span></div>
         </div>
-        {cartItems[0]?.user_id?.address?.map((useraddress:any,index:number)=>
+        {/* {cartItems[0]?.user_id?.address?.map((useraddress:any,index:number)=>
         <div className="w-[50%] flex flex-col gap-2">
             <div className="mt-[50px] flex items-center"><span className="p-1 text-[16px] font-bold">{index+1}. {useraddress.addressType}</span><a className="text-xs text-[#A03037] pl-[50px]">Edit</a></div>
             <span>Address</span>
@@ -31,7 +30,7 @@ function ProfilePageComponent(){
             <div className="w-[48%] flex flex-col"><label>State</label><input type="text" className="px-5 py-2 h-[45px] border-2" defaultValue={useraddress.state}/></div>
             </div>
             <div className="flex justify-end"><Button variant="contained" size="small">Save</Button></div>
-        </div>)}
+        </div>)} */}
         </div>
         </div>
     </div>

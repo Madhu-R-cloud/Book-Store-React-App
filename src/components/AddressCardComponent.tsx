@@ -15,6 +15,9 @@ function AddressCardComponent({useraddress,index}:{useraddress:any,index:number}
         setEditAddress(false)
         await editUserAddress(addressObj)
     }
+    useEffect(()=>{
+
+    },[newAddress])
 
     return (
         <div key={index}>

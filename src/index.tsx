@@ -16,7 +16,6 @@ import WishListComponent from './components/WishListComponent';
 import MyOrdersComponent from './components/MyOrdersComponent';
 import SuccessPageComponent from './components/SuccessPageComponent';
 import ProfilePageComponent from './components/ProfilePageComponent';
-import AuthPageComponent from './components/AuthPageComponent';
 // import { Provider } from 'react-redux';
 // import appStore from './utilis/store/AppStore';
 const root = ReactDOM.createRoot(

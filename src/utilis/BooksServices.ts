@@ -119,6 +119,8 @@ try{
 }
 
 export async function bookFeedback(productId:string,rating:number,comment:string){
+  console.log("Product",productId,'Rating',rating,'comment',comment);
+  
   await axios.post(`${BaseURL}add/feedback/${productId}`,{
       "comment": comment,
       "rating": rating

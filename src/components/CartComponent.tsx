@@ -17,6 +17,7 @@ import {
 import { deleteCartItem, putCartList } from "../utilis/store/CartSlice";
 import AddressCard from "./AddressCardComponent";
 import { Repeat } from "@mui/icons-material";
+import OrderSummeryDisplayComponent from "./OrderSummeryDisplayComponent";
 
 function CartComponent() {
   const books = useSelector((store: any) => store.books.bookItems);
@@ -189,14 +190,14 @@ function CartComponent() {
               color: "#333232",
             }}
           >
-            <AccordionSummary sx={{ fontWeight: 600, fontSize: "18px" }}>
+            <AccordionSummary sx={{ fontWeight: 600, fontSize: "18px"}}>
               Order Summary
             </AccordionSummary>
             <AccordionDetails>
               <div>
                 {cartItems.length ? (
                   cartItems.map((book: any, index: number) => (
-                    <CartBookCard key={index} index={-1} book={book} />
+                    <OrderSummeryDisplayComponent key={index} index={-1} book={book} />
                   ))
                 ) : (
                   <center>
@@ -205,7 +206,7 @@ function CartComponent() {
                     </h1>
                   </center>
                 )}
-                <div className="flex justify-end">
+                <div className="flex justify-end mt-[15px]">
                   <Button
                     variant="contained"
                     sx={{ width: "160px", backgroundColor: "#3371B5" }}
