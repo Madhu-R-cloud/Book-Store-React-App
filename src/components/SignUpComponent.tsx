@@ -8,7 +8,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Button from '@mui/material/Button';
 import { createUser } from "../utilis/userServices";
 import FormHelperText from "@mui/material/FormHelperText";
-import { NavigateFunction, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 interface SignUpDetails {
   fullName: string;
@@ -80,14 +80,15 @@ function SignUpComponent() {
         password: password,
         phone: mobileNo
       }
+      console.log(newUser)
     await createUser(userObj,navigate)
 } 
 
   return (
     <>
       <TextField
-        id="fullName"
-        name="fullName"
+        id="fullname"
+        // name="fullName"
         size="small"
         label="Full Name"
         error={errors.fullName !== ""}
@@ -98,8 +99,8 @@ function SignUpComponent() {
 
 
       <TextField
-        id="email"
-        name="email"
+        id="emailId"
+        // name="email"
         size="small"
         label="Email id"
         error={errors.email !== ""}
@@ -110,7 +111,7 @@ function SignUpComponent() {
 
       <OutlinedInput
         id="password"
-        name="password"
+        // name="password"
         size="small"
         type={showPassword ? "text" : "password"}
         // value={signUpDetails.password}
@@ -131,9 +132,9 @@ function SignUpComponent() {
       <FormHelperText error={errors.password !== ""}>{errors.password}</FormHelperText>
 
       <TextField
-        id="mobileNumber"
+        id="mobileNo"
         type="number"
-        name="mobileNumber"
+        // name="mobileNumber"
         size="small"
         label="Mobile Number"
         error={errors.mobileNumber !== ""}
@@ -160,7 +161,4 @@ function SignUpComponent() {
 }
 
 export default SignUpComponent;
-function SignUp(SignUpDetails: SignUpDetails, navigate: NavigateFunction) {
-  throw new Error("Function not implemented.");
-}
 

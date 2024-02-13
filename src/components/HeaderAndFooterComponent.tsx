@@ -15,6 +15,7 @@ function HeaderAndFooterComponent() {
   return (
     <>
       <HeaderComponent />
+        
         <Outlet />
 
         <div

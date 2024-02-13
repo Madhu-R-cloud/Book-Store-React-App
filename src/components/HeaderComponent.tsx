@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import educationLogo from "../assets/education.png";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import CopyrightOutlinedIcon from "@mui/icons-material/CopyrightOutlined";
 import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
-import { Link, Outlet } from "react-router-dom";
-import { Provider, useDispatch, useSelector } from "react-redux";
-import appStore from "../utilis/store/AppStore";
+import { Link, useNavigate } from "react-router-dom";
+import {  useDispatch, useSelector } from "react-redux";
 import {
   getBookDetails,
   getCartsDetails,
@@ -22,7 +20,6 @@ import {
   Badge,
   Box,
   Button,
-  Divider,
   IconButton,
   ListItemIcon,
   Menu,
@@ -57,6 +54,11 @@ function HeaderComponent() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+const navigate = useNavigate();
+  const handleLogout = ()=>{
+    localStorage.removeItem("accessToken")
+     navigate('/');
+  }
 
   const getBooks = async () => {
     try {
@@ -72,6 +74,10 @@ function HeaderComponent() {
 
   useEffect(() => {
     getBooks();
+   
+    
+  }, []);
+  useEffect(() => {
     getCartDetails();
     getWishListDetails();
   }, []);
@@ -243,6 +249,7 @@ function HeaderComponent() {
                         borderColor: "#A03037",
                         color: "#A03037",
                       }}
+                      onClick={handleLogout}
                     >
                       Logout
                     </Button>

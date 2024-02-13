@@ -8,6 +8,7 @@ export async function createUser(userObj:object,navigate:Function){
   await axios.post(`${BASEURL}/registration`,userObj).then(res => {
     const usertoken = res.data.result.accessToken
     localStorage.setItem("accessToken",usertoken)
+
     navigate("/book")
       }).catch(err => {
         navigate("/error")
@@ -17,16 +18,19 @@ export async function createUser(userObj:object,navigate:Function){
         });
       }
 
-      export async function Login(userObj:object,navigate:Function){
-        await axios.post(`${BASEURL}/login`,userObj).then(res => {
+      export async function Login(userObj:object,navigate:Function,setError:Function){
+       await axios.post(`${BASEURL}/login`,userObj).then(res => {
           const usertoken = res.data.result.accessToken
           localStorage.setItem("accessToken",usertoken)
           navigate("/book")
+          
             }).catch(err => {
-              navigate("/error")
-              // alert('Something went wrong')
+              if(err?.response?.data){
+                
                 const error = err.response.data.error
-                console.log(error);
+               setError(error);
+              }
                 
               });
+        
             }

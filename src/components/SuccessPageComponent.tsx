@@ -1,4 +1,4 @@
-import OrderSuccessGif from "../assets/palaces_order.gif";
+// import OrderSuccessGif from "../assets/palaces_order.gif";
 import CelebrationGif from '../assets/diwali-sparkles-stars.gif'
 import { Link } from "react-router-dom";
 function SuccessPageComponent() {

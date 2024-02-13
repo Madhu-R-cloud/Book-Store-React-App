@@ -59,6 +59,7 @@ function BookDetailsComponent() {
   };
 
   const cartId = cartItems?.filter((book: any) => book?._id===bookId)[0];
+  // console.log(cartItems,'cartId');
   
   const wishId = wishLists?.filter((book: any) => book?._id === bookId)[0];
 
@@ -68,10 +69,12 @@ function BookDetailsComponent() {
     dispatch(addItemToCart({ ...bookData,product_id:NewCartBook.product_id,quantityToBuy: 1, cartId: NewCartBook._id }))
   };
   
-
+  // console.log(cartItems);
+  
   const IncrementQuantity = () => {
+   const cartData = cartItems?.filter((book: any) => book?._id===bookId)[0];
     
-    let updatedQuntity = cartItems[0].quantityToBuy;
+    let updatedQuntity = cartData.quantityToBuy;
     updatedQuntity++;
     dispatch(updateItemQuantity({ itemId: bookId, updatedQuantity: updatedQuntity }));
     updateCartQty(cartId?.cartId, updatedQuntity);
@@ -80,44 +83,13 @@ function BookDetailsComponent() {
 
 
   const decrementQuantity = () => {
+    const cartData = cartItems?.filter((book: any) => book?._id===bookId)[0];
     
-    let updatedQuntity = cartItems[0].quantityToBuy;
+    let updatedQuntity = cartData.quantityToBuy;
     updatedQuntity--;
     dispatch(updateItemQuantity({ itemId: bookId, updatedQuantity: updatedQuntity }));
     updateCartQty(cartId?.cartId, updatedQuntity);
   };
-
-
-  // const IncrementQuantity = () => {
-  //   let updatedQuntity = cartBook.quantityToBuy;
-  //   if (updatedQuntity <= book.quantity) {
-  //     updatedQuntity++;
-  //     dispatch(
-  //       updateItemQuantity({ itemId: book._id, updatedQuantity: updatedQuntity })
-  //     );
-  //     updateCartQty(book.cartId, updatedQuntity);
-  //   }
-  // };
-  // const IncrementQuantity = () => {
-    
-  //   let updatedQuntity = cartItems[0].quantityToBuy;
-  //   updatedQuntity++;
-  //   dispatch(updateItemQuantity({ itemId: bookId, updatedQuantity: updatedQuntity }));
-  //   updateCartQty(cartId?.cartId, updatedQuntity);
-    
-  // };
-
-  // const decrementQuantity = () => {
-  //   let updatedQuntity = cartBook.quantityToBuy;
-  //   if (updatedQuntity > 1) {
-  //     updatedQuntity--;
-  //     dispatch(
-  //       updateItemQuantity({ itemId: book._id, updatedQuantity: updatedQuntity })
-  //     );
-  //     updateCartQty(book.cartId, updatedQuntity);
-  //   }
-  // };
-
 
   useEffect(() => {
     setBookData(bookItems.filter((book: any) => book._id === bookId)[0]);
@@ -128,7 +100,7 @@ function BookDetailsComponent() {
     if (wishId?._id) {
       setWishList(true);
     }
-  }, [bookItems,  cartItems,wishLists]);
+  }, [bookItems,cartItems,wishLists,feedBackList]);
 
   const handleWishList = () => {
     addWishList(bookId!);
@@ -136,9 +108,14 @@ function BookDetailsComponent() {
     setWishList(true);
   };
 
+  useEffect(()=>{
+    getReviews()
+  },[])
+
   const pushFeeback = async()=>{
     const comment = (document.getElementById('comment') as HTMLInputElement)
-    await bookFeedback(bookId!,value!,comment.value)
+    await bookFeedback(bookId!,value!,comment.value + 'Even though the translation could have been better, Chanakyas neeti are thought provoking. Chanakya has written on many different topics and his writings are succinct.')
+    
     setValue(0)
     comment.value = ''
 }
@@ -310,6 +287,7 @@ const getReviews = async()=>{
               <div className="flex w-[527px] h-[63px] bg-[white] ml-[15px] mt-[10px]">
                 <input
                   type="text"
+                  id="comment"
                   placeholder="Write Your Review....."
                   style={{
                     fontSize: "12px",

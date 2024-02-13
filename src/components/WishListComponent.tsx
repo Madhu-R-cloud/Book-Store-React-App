@@ -20,7 +20,7 @@ function WishListComponent() {
 
 
   return (
-    <div className="w-full h-full flex justify-center">
+    <div className="w-full h-full flex justify-center mb-[178px]">
       {!dataloaded ? (
         <div className="w-[80%] font-[Roboto]">
           <div className="mt-[20px]">
